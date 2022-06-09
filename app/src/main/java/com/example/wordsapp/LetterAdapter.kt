@@ -17,6 +17,7 @@ package com.example.wordsapp
 
 import android.content.Intent
 import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,14 +71,17 @@ class LetterAdapter :
         val letraClicada = holder.button.text.toString()
 
         holder.button.setOnClickListener {
+        //TODO [OK] 1. Crie uma Intent para navegar até a DetalheActivity
+        val intent = Intent(contexto, DetalheActivity::class.java)
 
-            //TODO 1. Crie uma Intent para navegar até a DetalheActivity
+        //TODO [OK] 2. Passe o valor da variável letraClicada a Intent criada
+        val bundle = Bundle()
+        bundle.putString("stringClickedWord", letraClicada)
+        intent.putExtra("bundleStringClickedWord", bundle)
 
-            //TODO 2. Passe o valor da variável letraClicada a Intent criada
-
-            //TODO 3. Chame a função startActivity do objeto contexo
-            // passando a Intent criada como parâmetro
-
+        //TODO [OK] 3. Chame a função startActivity do objeto contexo passando a Intent criada como
+        //parâmetro.
+        contexto.startActivity(intent)
         }
     }
 
